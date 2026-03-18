@@ -1,11 +1,19 @@
+<%= link_to "← Back to #{@attraction.city.name}", city_path(@attraction.city), class: "btn btn-outline-secondary mb-3" %>
+
 <h1><%= @attraction.name %></h1>
+<p><strong>City:</strong> <%= link_to @attraction.city.name, city_path(@attraction.city) %></p>
+<p><strong>Country:</strong> <%= link_to @attraction.city.country.name, country_path(@attraction.city.country) %></p>
 <p><%= @attraction.description %></p>
 
 <h2>Reviews</h2>
-<ul class="list-group">
-  <% @reviews.each do |review| %>
-    <li class="list-group-item">
-      Rating: <strong><%= review.rating %></strong> - <%= review.comment %>
-    </li>
-  <% end %>
-</ul>
+<% if @reviews.empty? %>
+  <p class="text-muted">No reviews yet.</p>
+<% else %>
+  <ul class="list-group">
+    <% @reviews.each do |review| %>
+      <li class="list-group-item">
+        <strong>Rating: <%= review.rating %>/5</strong> — <%= review.comment %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

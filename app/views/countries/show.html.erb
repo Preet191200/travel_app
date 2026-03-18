@@ -1,13 +1,17 @@
-<h1><%= @country.name %></h1>
+<%= link_to "← Back to #{@city.country.name}", country_path(@city.country), class: "btn btn-outline-secondary mb-3" %>
 
-<h2>Cities</h2>
+<h1><%= @city.name %></h1>
+<p><strong>Country:</strong> <%= link_to @city.country.name, country_path(@city.country) %></p>
+
+<h2>Attractions in <%= @city.name %></h2>
 <div class="row">
-  <% @cities.each do |city| %>
+  <% @attractions.each do |attraction| %>
     <div class="col-md-4 mb-3">
       <div class="card h-100 shadow-sm">
         <div class="card-body">
-          <h5 class="card-title"><%= city.name %></h5>
-          <%= link_to "View Attractions", city_path(city), class: "btn btn-primary" %>
+          <h5 class="card-title"><%= attraction.name %></h5>
+          <p class="card-text"><%= attraction.description %></p>
+          <%= link_to "View Reviews", attraction_path(attraction), class: "btn btn-primary" %>
         </div>
       </div>
     </div>
