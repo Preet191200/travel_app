@@ -1,0 +1,28 @@
+<h1>Countries</h1>
+
+<form action="<%= countries_path %>" method="get" class="mb-4">
+  <div class="input-group">
+    <input type="text" name="search" value="<%= params[:search] %>" class="form-control" placeholder="Search by country or region...">
+    <button type="submit" class="btn btn-primary">Search</button>
+    <%= link_to "Clear", countries_path, class: "btn btn-outline-secondary" %>
+  </div>
+</form>
+
+<% if params[:search].present? %>
+  <p class="text-muted">Showing results for "<strong><%= params[:search] %></strong>" — <%= @countries.count %> found</p>
+<% end %>
+
+<div class="row">
+  <% @countries.each do |country| %>
+    <div class="col-md-4 mb-3">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title"><%= country.name %></h5>
+          <p class="card-text">Region: <%= country.region %></p>
+          <p class="card-text">Population: <%= country.population %></p>
+          <%= link_to "View Cities", country_path(country), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

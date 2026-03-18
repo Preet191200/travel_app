@@ -1,0 +1,11 @@
+<h1><%= @attraction.name %></h1>
+<p><%= @attraction.description %></p>
+
+<h2>Reviews</h2>
+<ul class="list-group">
+  <% @reviews.each do |review| %>
+    <li class="list-group-item">
+      Rating: <strong><%= review.rating %></strong> - <%= review.comment %>
+    </li>
+  <% end %>
+</ul>

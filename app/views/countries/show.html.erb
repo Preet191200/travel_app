@@ -1,0 +1,15 @@
+<h1><%= @country.name %></h1>
+
+<h2>Cities</h2>
+<div class="row">
+  <% @cities.each do |city| %>
+    <div class="col-md-4 mb-3">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title"><%= city.name %></h5>
+          <%= link_to "View Attractions", city_path(city), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
