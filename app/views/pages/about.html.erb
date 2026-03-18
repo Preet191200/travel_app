@@ -1,0 +1,28 @@
+<h1>About TravelApp</h1>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h2 class="card-title">About This Project</h2>
+    <p>TravelApp is a Ruby on Rails application that lets users explore countries, cities, and tourist attractions around the world.</p>
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h2 class="card-title">Data Sources</h2>
+    <p>The data for this project was generated using the <strong>Faker gem</strong>, which provides realistic fake data including country names, city names, attraction names, descriptions, and user reviews.</p>
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h2 class="card-title">Database Structure</h2>
+    <ul>
+      <li><strong>Countries</strong> - name, region, population</li>
+      <li><strong>Cities</strong> - name, belongs to a country</li>
+      <li><strong>Attractions</strong> - name, description, belongs to a city</li>
+      <li><strong>Reviews</strong> - rating, comment, belongs to an attraction</li>
+    </ul>
+    <p>The data follows a hierarchy: <strong>Country → City → Attraction → Review</strong></p>
+  </div>
+</div>

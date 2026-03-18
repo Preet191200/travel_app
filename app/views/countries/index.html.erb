@@ -1,15 +1,27 @@
 <h1>Countries</h1>
 
 <form action="<%= countries_path %>" method="get" class="mb-4">
-  <div class="input-group">
-    <input type="text" name="search" value="<%= params[:search] %>" class="form-control" placeholder="Search by country or region...">
-    <button type="submit" class="btn btn-primary">Search</button>
-    <%= link_to "Clear", countries_path, class: "btn btn-outline-secondary" %>
+  <div class="row g-2">
+    <div class="col-md-6">
+      <input type="text" name="search" value="<%= params[:search] %>" class="form-control" placeholder="Search by country name...">
+    </div>
+    <div class="col-md-4">
+      <select name="population" class="form-select">
+        <option value="">-- Filter by Population --</option>
+        <option value="small" <%= 'selected' if params[:population] == 'small' %>>Small (under 10 million)</option>
+        <option value="medium" <%= 'selected' if params[:population] == 'medium' %>>Medium (10M - 50M)</option>
+        <option value="large" <%= 'selected' if params[:population] == 'large' %>>Large (over 50 million)</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary w-100">Search</button>
+    </div>
   </div>
+  <%= link_to "Clear", countries_path, class: "btn btn-outline-secondary mt-2" %>
 </form>
 
-<% if params[:search].present? %>
-  <p class="text-muted">Showing results for "<strong><%= params[:search] %></strong>" — <%= @countries.count %> found</p>
+<% if params[:search].present? || params[:population].present? %>
+  <p class="text-muted">Showing <%= @countries.count %> results</p>
 <% end %>
 
 <div class="row">
