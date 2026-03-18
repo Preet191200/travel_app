@@ -16,6 +16,8 @@ class CountriesController < ApplicationController
         @countries = @countries.where("population > ?", 50_000_000)
       end
     end
+
+    @countries = @countries.page(params[:page]).per(6)
   end
 
   def show
